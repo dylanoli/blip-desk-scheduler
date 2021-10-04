@@ -90,8 +90,33 @@ function App() {
   function checkIsWorkDays(event: any) {
     const index = +event.target.id
     let newVal = { ...times };
-    console.log(newVal)
     newVal.weekdays[index].isWorkDay = event.target.checked;
+    setTimes(newVal)
+  }
+
+  function removeWorkTime(event: any) {
+    console.log(event);
+    const ids = event.target.id.split('-');
+    const indexWeek = ids[0];
+    const indexHour = ids[1];
+    console.log(indexWeek);
+    console.log(indexHour);
+    let newVal = { ...times };
+    newVal.weekdays[indexWeek].workTimes?.splice(indexHour, 1);
+    setTimes(newVal)
+  }
+
+  function addWorkTime(event: any) {
+    const index = +event.target.id;
+    const newItem: WorkTime = {
+      start: "09:00",
+      end: "19:00"
+    }
+    let newVal = { ...times };
+    if (newVal.weekdays[index].workTimes)
+      newVal.weekdays[index].workTimes?.push(newItem);
+    else
+      newVal.weekdays[index].workTimes = [newItem]
     setTimes(newVal)
   }
 
@@ -106,16 +131,16 @@ function App() {
     function htmlHoursList(index: number) {
       if (times.weekdays[index].isWorkDay && times.weekdays[index].workTimes)
         return <div>
-          {times.weekdays[index].workTimes?.map(element => (
+          {htmlCheckBox(index)}
+          {times.weekdays[index].workTimes?.map((element, indexHour) => (
             <>
-              {htmlCheckBox(index)}
-              <div>Início: {element.start}</div>
+              <div>Início: <input type="text" value={element.start} /> </div>
               <div>Fim: {element.end}</div>
-              <button>X</button>
+              <button id={index + '-' + indexHour} onClick={removeWorkTime}>X</button>
             </>
           ))}
           <br />
-          <button>Novo</button>
+          <button id={index.toString()} onClick={addWorkTime} >Novo</button>
         </div>
       else
         return <div>
