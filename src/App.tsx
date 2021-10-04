@@ -87,6 +87,29 @@ function App() {
   })
   const weekDays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
 
+  function validateFieldStart(indexDay:number, indexHour:number){
+    const weekDay = times.weekdays[indexDay];
+    return weekDay.isWorkDay && weekDay.workTimes && validateField(weekDay.workTimes[indexHour].start);
+  }
+
+  function validateFieldEnd(indexDay:number, indexHour:number){
+    const weekDay = times.weekdays[indexDay];
+    return weekDay.isWorkDay && weekDay.workTimes && validateField(weekDay.workTimes[indexHour].end);
+  }
+  function validateField(value:string){
+      const regex = /[0-9]{2}:[0-9]{2}/gm
+      if(regex.test(value)){
+        const hours = value.split(':');
+        return !isNaN(+hours[0]) 
+        && !isNaN(+hours[1])
+        && +hours[0] < 24
+        && +hours[0] >= 0
+        && +hours[1] < 60
+        && +hours[1] >= 0
+      }
+      return false;
+  }
+
   function checkIsWorkDays(event: any) {
     const index = +event.target.id
     let newVal = { ...times };
