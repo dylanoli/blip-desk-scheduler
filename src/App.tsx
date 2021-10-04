@@ -94,6 +94,34 @@ function App() {
     setTimes(newVal)
   }
 
+  function changeStart(event: any) {
+    const ids = event.target.id.split('-');
+    const indexWeek = ids[0];
+    const indexHour = ids[1];
+    let newVal = { ...times };
+    let weekdays = newVal.weekdays[indexWeek];
+    if(weekdays.workTimes){
+      let workTime = weekdays.workTimes.find((_item,index) => (index == indexHour));
+      if(workTime)
+        workTime.start = event.target.value;
+    }
+    setTimes(newVal)
+  }
+
+  function changeEnd(event: any) {
+    const ids = event.target.id.split('-');
+    const indexWeek = ids[0];
+    const indexHour = ids[1];
+    let newVal = { ...times };
+    let weekdays = newVal.weekdays[indexWeek];
+    if(weekdays.workTimes){
+      let workTime = weekdays.workTimes.find((_item,index) => (index == indexHour));
+      if(workTime)
+        workTime.end = event.target.value;
+    }
+    setTimes(newVal)
+  }
+
   function removeWorkTime(event: any) {
     console.log(event);
     const ids = event.target.id.split('-');
@@ -134,18 +162,24 @@ function App() {
           {htmlCheckBox(index)}
           {times.weekdays[index].workTimes?.map((element, indexHour) => (
             <>
-              <div>Início: <input type="text" value={element.start} /> </div>
-              <div>Fim: {element.end}</div>
+              <div>Início: <input type="text" id={index + '-' + indexHour} value={element.start} onChange={changeStart} /> </div>
+              <div>Fim: <input type="text" id={index + '-' + indexHour} value={element.end} onChange={changeEnd} /> </div>
               <button id={index + '-' + indexHour} onClick={removeWorkTime}>X</button>
             </>
           ))}
           <br />
           <button id={index.toString()} onClick={addWorkTime} >Novo</button>
         </div>
-      else
+      else if(times.weekdays[index].isWorkDay )
         return <div>
           {htmlCheckBox(index)}
+          <br />
+          <button id={index.toString()} onClick={addWorkTime} >Novo</button>
         </div>
+      else
+      return <div>
+        {htmlCheckBox(index)}
+      </div>
     }
 
     function htmlCheckBox(index: number) {
