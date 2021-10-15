@@ -5,12 +5,10 @@ import { Guid } from 'js-guid';
 import './App.css';
 type Times = {
   weekdays: Weekdays[],
-  holidays: string[],
   noWorkDays: string[]
 }
 type Weekdays = {
-  isWorkDay: boolean,
-  workTimes?: WorkTime[]
+  workTimes: WorkTime[]
 }
 type WorkTime = {
   start: string,
@@ -62,13 +60,14 @@ function App() {
 
   function validateFieldStart(indexDay: number, indexHour: number) {
     const weekDay = times.weekdays[indexDay];
-    return weekDay.isWorkDay && weekDay.workTimes && validateField(weekDay.workTimes[indexHour].start);
+    return weekDay.workTimes && validateField(weekDay.workTimes[indexHour].start);
   }
 
   function validateFieldEnd(indexDay: number, indexHour: number) {
     const weekDay = times.weekdays[indexDay];
-    return weekDay.isWorkDay && weekDay.workTimes && validateField(weekDay.workTimes[indexHour].end);
+    return weekDay.workTimes && validateField(weekDay.workTimes[indexHour].end);
   }
+
   function validateField(value: string) {
     const regex = /[0-9]{2}:[0-9]{2}/gm
     if (regex.test(value)) {
@@ -83,13 +82,6 @@ function App() {
     return false;
   }
 
-  function checkIsWorkDays(event: any) {
-    const index = +event.target.id
-    let newVal = { ...times };
-    newVal.weekdays[index].isWorkDay = event.target.checked;
-    setTimes(newVal)
-  }
-
   function changeStart(event: any) {
     const ids = event.target.id.split('-');
     const indexWeek = ids[0];
@@ -97,7 +89,7 @@ function App() {
     let newVal = { ...times };
     let weekdays = newVal.weekdays[indexWeek];
     if (weekdays.workTimes) {
-      let workTime = weekdays.workTimes.find((_item, index) => (index == indexHour));
+      let workTime = weekdays.workTimes.find((_item, index) => (index === indexHour));
       if (workTime)
         workTime.start = event.target.value;
     }
@@ -111,10 +103,17 @@ function App() {
     let newVal = { ...times };
     let weekdays = newVal.weekdays[indexWeek];
     if (weekdays.workTimes) {
-      let workTime = weekdays.workTimes.find((_item, index) => (index == indexHour));
+      let workTime = weekdays.workTimes.find((_item, index) => (index === indexHour));
       if (workTime)
         workTime.end = event.target.value;
     }
+    setTimes(newVal)
+  }
+
+  function removeDayOff(event: any) {
+    const index = event.target.id;
+    let newVal = { ...times };
+    newVal.noWorkDays.splice(index, 1);
     setTimes(newVal)
   }
 
@@ -126,7 +125,15 @@ function App() {
     console.log(indexWeek);
     console.log(indexHour);
     let newVal = { ...times };
-    newVal.weekdays[indexWeek].workTimes?.splice(indexHour, 1);
+    newVal.weekdays[indexWeek].workTimes.splice(indexHour, 1);
+    setTimes(newVal)
+  }
+
+
+  function addDayOff(event: any) {
+    const newItem: string = 'MM-DD'
+    let newVal = { ...times };
+    newVal.noWorkDays.push(newItem);
     setTimes(newVal)
   }
 
@@ -138,7 +145,7 @@ function App() {
     }
     let newVal = { ...times };
     if (newVal.weekdays[index].workTimes)
-      newVal.weekdays[index].workTimes?.push(newItem);
+      newVal.weekdays[index].workTimes.push(newItem);
     else
       newVal.weekdays[index].workTimes = [newItem]
     setTimes(newVal)
@@ -147,56 +154,56 @@ function App() {
   function htmlListWeek() {
     return weekDays.map((element, index) => (
       <div key={index}>
-        <h1>{element}</h1>
+        <h2>{element}</h2>
         {htmlHoursList(index)}
       </div>
     ))
 
     function htmlHoursList(index: number) {
-      if (times.weekdays[index].isWorkDay && times.weekdays[index].workTimes)
-        return <div>
-          {htmlCheckBox(index)}
-          {times.weekdays[index].workTimes?.map((element, indexHour) => (
-            <>
-              <div>Início: <input type="text" id={index + '-' + indexHour + '-stt'} value={element.start} onChange={changeStart} /> </div>
-              <div>Fim: <input type="text" id={index + '-' + indexHour + '-end'} value={element.end} onChange={changeEnd} /> </div>
-              <button id={index + '-' + indexHour} onClick={removeWorkTime}>X</button>
-            </>
-          ))}
-          <br />
-          <button id={index.toString()} onClick={addWorkTime} >Novo</button>
-        </div>
-      else if (times.weekdays[index].isWorkDay)
-        return <div>
-          {htmlCheckBox(index)}
-          <br />
-          <button id={index.toString()} onClick={addWorkTime} >Novo</button>
-        </div>
-      else
-        return <div>
-          {htmlCheckBox(index)}
-        </div>
+      return <div>
+        {times.weekdays[index].workTimes.map((element, indexHour) => (
+          <>
+            <div>Início: <input type="text" id={index + '-' + indexHour + '-stt'} value={element.start} onChange={changeStart} /> </div>
+            <div>Fim: <input type="text" id={index + '-' + indexHour + '-end'} value={element.end} onChange={changeEnd} /> </div>
+            <button id={index + '-' + indexHour} onClick={removeWorkTime}>X</button>
+          </>
+        ))}
+        <br />
+        <button id={index.toString()} onClick={addWorkTime} >Novo</button>
+      </div>
     }
+  }
 
-    function htmlCheckBox(index: number) {
-      return (
-        <div>
-          <label>Dia de trabalho
-            <input type="checkbox" id={index.toString()} name="is-work-day" checked={times.weekdays[index].isWorkDay} onChange={checkIsWorkDays} />
-          </label>
-        </div>
-      )
-    }
+  function htmlDaysOff() {
+    return <div>
+      {times.noWorkDays.map((element, index) => (
+        <>
+          <input type="text" value={element} />
+          <button id={index.toString()} onClick={removeDayOff}>X</button>
+        </>
+      ))}
+      <br />
+      <button onClick={addDayOff} >Novo</button>
+    </div>
+  }
+
+  function htmlJson() {
+    return JSON.stringify(times)
   }
   return (
     <div className="App">
       <input type="text" value={botKey} onChange={(event) => { setBotKey(event.target.value) }} />
       <button onClick={getTimes}>Iniciar</button>
+      <h1>Dias de trabalho</h1>
       <div className="week-container">
         {htmlListWeek()}
       </div>
+      <h1>Dias sem trabalhos</h1>
+      {htmlDaysOff()}
       <br />
       <button onClick={save}>Salvar</button>
+      <br />
+      {htmlJson()}
     </div>
   );
 }
@@ -206,10 +213,9 @@ export default App;
 const deafultTime: Times = {
   weekdays: [
     {
-      isWorkDay: false,
+      workTimes: []
     },
     {
-      isWorkDay: true,
       workTimes: [
         {
           start: "09:00",
@@ -218,7 +224,6 @@ const deafultTime: Times = {
       ]
     },
     {
-      isWorkDay: true,
       workTimes: [
         {
           start: "09:00",
@@ -227,7 +232,6 @@ const deafultTime: Times = {
       ]
     },
     {
-      isWorkDay: true,
       workTimes: [
         {
           start: "09:00",
@@ -236,7 +240,6 @@ const deafultTime: Times = {
       ]
     },
     {
-      isWorkDay: true,
       workTimes: [
         {
           start: "09:00",
@@ -245,7 +248,6 @@ const deafultTime: Times = {
       ]
     },
     {
-      isWorkDay: true,
       workTimes: [
         {
           start: "09:00",
@@ -254,10 +256,10 @@ const deafultTime: Times = {
       ]
     },
     {
-      isWorkDay: false
+      workTimes: []
     }
   ],
-  holidays: [
+  noWorkDays: [
     "01-01",
     "04-21",
     "05-01",
@@ -266,11 +268,7 @@ const deafultTime: Times = {
     "10-12",
     "11-02",
     "11-15",
-    "12-25"
-  ],
-  noWorkDays: [
-    "04-02",
-    "12-24",
+    "12-25",
     "12-31"
   ]
 }
