@@ -1,0 +1,43 @@
+@import 'tachyons';
+@import '~blip-toolkit/dist/scss/main';
+@import '~blip-ds/dist/collection/styles/_fonts.scss';
+@import '~blip-ds/dist/collection/styles/_colors.scss';
+
+// plugin template scss
+@import 'variables';
+@import 'mixins';
+@import 'utilities';
+
+body {
+    margin: 0;
+    font-family: $font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.App-logo {
+    height: 10rem;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: Heartbit infinite 4s linear;
+    }
+}
+
+@keyframes Heartbit {
+    50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.3;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
