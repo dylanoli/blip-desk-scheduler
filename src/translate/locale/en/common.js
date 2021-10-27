@@ -1,29 +1,19 @@
 const translations = {
     title: {
-        homePage: 'Plugins Template',
-        exemples: 'Examples',
-        systemInfo: 'System info',
-        userInfo: 'User info'
+        homePage: 'Blip desk scheduler'
     },
-    paragraph: {
-        homeDescription: {
-            part1: 'This is a basic plugin template.',
-            part2: 'Edit <1>src/pages/Home.js</1> and save to reload.'
-        }
-    },
-    link: {
-        storedExemple: 'Get stored data as props',
-        swrExemple: 'SWR fetch data'
+    labels: {
+        start: 'Start',
+        end: 'End',
+        new: 'New',
+        save: 'Save'
     },
     button: {
-        repository: 'Visit the Repository'
+        repository: 'Repository'
     },
-    menu: {
-        goBack: 'Back'
-    },
-    name: 'Name',
-    shortName: 'Short name',
-    email: 'E-mail',
+    name: 'Dylan Oliveira',
+    shortName: 'Dylan',
+    email: 'dylan.oli@hotmail.com',
     phone: 'Phone',
     identity: 'Identity',
     identifier: 'Identifier',

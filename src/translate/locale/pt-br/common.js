@@ -1,29 +1,19 @@
 const translations = {
     title: {
-        homePage: 'Template de Plugins',
-        exemples: 'Exemplos',
-        systemInfo: 'Informações do sistema',
-        userInfo: 'Informações do usuário'
+        homePage: 'Blip desk scheduler'
     },
-    paragraph: {
-        homeDescription: {
-            part1: 'Este é um modelo de plugin básico',
-            part2: 'Edite <1>src/pages/Home.js</1> e salve para recarregar.'
-        }
-    },
-    link: {
-        storedExemple: 'Obtenha dados armazenados como variáveis',
-        swrExemple: 'Buscar dados com SWR'
+    labels: {
+        start: 'Início',
+        end: 'Fim',
+        new: 'Novo',
+        save: 'Salvar'
     },
     button: {
-        repository: 'Visite o Repositório'
+        repository: 'Repositório'
     },
-    menu: {
-        goBack: 'Voltar'
-    },
-    name: 'Nome',
-    shortName: 'Nome abreviado',
-    email: 'E-mail',
+    name: 'Dylan Oliveira',
+    shortName: 'Dylan',
+    email: 'dylan.oli@hotmail.com',
     phone: 'Telefone',
     identity: 'Identificador',
     identifier: 'Identificador',

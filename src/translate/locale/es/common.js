@@ -1,29 +1,19 @@
 const translations = {
     title: {
-        homePage: 'Plantilla de complementos',
-        exemples: 'Ejemplos',
-        systemInfo: 'Información del sistema',
-        userInfo: 'Información del usuario'
+        homePage: 'Blip desk scheduler'
     },
-    paragraph: {
-        homeDescription: {
-            part1: 'Esta es una plantilla de complemento básica',
-            part2: 'Edite <1>src/pages/Home.js</1> y guarde para recargar.'
-        }
-    },
-    link: {
-        storedExemple: 'Obtener datos almacenados como variables',
-        swrExemple: 'Obtener datos con SWR'
+    labels: {
+        start: 'Comienzo',
+        end: 'El fin',
+        new: 'Nuevo',
+        save: 'Ahorrar'
     },
     button: {
-        repository: 'Visite el Repositorio'
+        repository: 'Repositorio'
     },
-    menu: {
-        goBack: 'Volver'
-    },
-    name: 'Nombre',
-    shortName: 'Nombre corto',
-    email: 'E-mail',
+    name: 'Dylan Oliveira',
+    shortName: 'Dylan',
+    email: 'dylan.oli@hotmail.com',
     phone: 'Teléfono',
     identity: 'Identificador',
     identifier: 'Identificador',
