@@ -1,0 +1,9 @@
+.week-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.days-off-group {    
+    display: flex;
+    justify-content:start
+}
