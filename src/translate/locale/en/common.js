@@ -11,6 +11,7 @@ const translations = {
     button: {
         repository: 'Repository'
     },
+    loading: 'Loading...',
     name: 'Dylan Oliveira',
     shortName: 'Dylan',
     email: 'dylan.oli@hotmail.com',
