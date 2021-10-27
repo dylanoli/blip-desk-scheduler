@@ -1,8 +1,0 @@
-.week-container{
-  display: flex;
-  justify-content: space-around;
-}
-
-.fail{
-  border-color: red;
-}

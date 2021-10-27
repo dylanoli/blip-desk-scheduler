@@ -1,1 +1,0 @@
-export const BLIP_COMMANDS_URL = process.env.BLIP_COMMANDS_URL ?? 'https://msging.net/commands'
