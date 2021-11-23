@@ -29,13 +29,16 @@ const Home = () => {
     useEffect(() => {
         withLoadingAsync(async () => {
             setApplication(await getApplicationDataAsync());
-
-            const resourceTimes = JSON.parse(
-                await getResourceAsync(WORK_TIME_NAME)
-            );
-            if (resourceTimes.weekdays && resourceTimes.noWorkDays) {
-                setTimes(resourceTimes);
-            } else {
+            try {
+                const resourceTimes = JSON.parse(
+                    await getResourceAsync(WORK_TIME_NAME)
+                );
+                if (resourceTimes.weekdays && resourceTimes.noWorkDays) {
+                    setTimes(resourceTimes);
+                } else {
+                    setTimes(DEFAULT_TIME);
+                }
+            } catch (error) {
                 setTimes(DEFAULT_TIME);
             }
         });
@@ -134,7 +137,6 @@ const Home = () => {
                     removeDayOff={removeDayOff}
                     addDayOff={addDayOff}
                 />
-                {JSON.stringify(times)}
                 <br />
                 <br />
                 <Button
