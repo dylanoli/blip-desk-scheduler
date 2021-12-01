@@ -24,6 +24,7 @@ const HoursList = ({
                         placeholder="HH:MM"
                         icon="clock"
                         value={element.start}
+                        dataTestId={`ipt-change-start-work-time-${index}-${indexHour}`}
                         onChange={(event) => {
                             changeStart(index, indexHour, event);
                         }}
@@ -44,6 +45,7 @@ const HoursList = ({
                         variant="ghost"
                         arrow={false}
                         disabled={false}
+                        dataTestId={`btn-remove-work-time-${index}-${indexHour}`}
                         onClick={() => {
                             removeWorkTime(index, indexHour);
                         }}
@@ -57,6 +59,7 @@ const HoursList = ({
                 variant="primary"
                 arrow={false}
                 disabled={false}
+                dataTestId={`btn-add-work-time-${index}`}
                 onClick={() => {
                     addWorkTime(index);
                 }}

@@ -18,9 +18,8 @@ const Analytics = ({ children }) => {
 
     const getPageTitle = (pathname) => {
         // eslint-disable-next-line no-unused-vars
-        const [id, details] =
-            Object.entries(RoutesPath).find(([i, d]) => d.PATH === pathname) ||
-            [];
+        const [details] =
+            Object.entries(RoutesPath).find(([d]) => d.PATH === pathname) || [];
 
         return details ? details.NAME : '';
     };

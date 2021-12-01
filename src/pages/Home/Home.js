@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/named
 import { withLoadingAsync } from '../../services/common-service';
@@ -13,7 +13,6 @@ import settings from '../../config';
 import Header from './components/Header';
 import Button from '../../components/Button';
 import { DEFAULT_TIME } from './constants';
-import './index.css';
 import DayOff from './components/DaysOff';
 import ListWeek from './components/ListWeek';
 
@@ -22,11 +21,16 @@ const BLANK = '_blank';
 const WORK_TIME_NAME = 'workTime';
 
 const Home = () => {
-    const [times, setTimes] = useState(null);
-    const [application, setApplication] = useState({});
+    const [times, setTimes] = React.useState(null);
+    const [application, setApplication] = React.useState({});
     const { t } = useTranslation();
-
-    useEffect(() => {
+    const styles = {
+        weekContainer: {
+            display: 'flex',
+            justifyContent: 'space-around'
+        }
+    };
+    React.useEffect(() => {
         withLoadingAsync(async () => {
             setApplication(await getApplicationDataAsync());
             try {
@@ -121,7 +125,7 @@ const Home = () => {
                     onClick={() => window.open(settings.repositoryUrl, BLANK)}
                 />
                 <h2>Dias de trabalho</h2>
-                <div className="week-container">
+                <div style={styles.weekContainer}>
                     <ListWeek
                         times={times}
                         changeStart={changeStart}
@@ -152,6 +156,11 @@ const Home = () => {
     }
     return (
         <div className="ph1 ph4-m ph5-ns pb5">
+            <Header
+                title={t('title.homePage')}
+                icon={PAGE_ICON}
+                onClick={() => window.open(settings.repositoryUrl, BLANK)}
+            />
             <h2>{t('loading')}</h2>
         </div>
     );
