@@ -66,5 +66,6 @@ export const DEFAULT_TIME = {
         '11-15',
         '12-25',
         '12-31'
-    ]
+    ],
+    schedulerMessage: 'olá'
 };
