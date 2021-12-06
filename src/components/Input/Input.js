@@ -12,6 +12,7 @@ const Input = ({
     errorMessage,
     minLength,
     maxLength,
+    dataTestId = 'bds-input',
     danger = false,
     focused = false,
     waitTime = 500,
@@ -65,7 +66,7 @@ const Input = ({
     return (
         <div className="relative">
             <bds-input
-                data-testid="bds-input"
+                data-testid={dataTestId}
                 ref={blipInputRef}
                 input-name={name}
                 label={label}
@@ -91,6 +92,7 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     icon: PropTypes.string,
     value: PropTypes.string,
+    dataTestId: PropTypes.string,
     helperMessage: PropTypes.string,
     errorMessage: PropTypes.string,
     minLength: PropTypes.number,

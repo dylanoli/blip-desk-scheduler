@@ -12,7 +12,10 @@ const getApplicationDataAsync = async (fullIdentity = null) => {
         action: IMPContainer.Actions.GET_APPLICATION,
         content: fullIdentity
     });
-    return application;
+    if (application) {
+        return application;
+    }
+    return { shortName: 'null' };
 };
 
 const getConfigurationDataAsync = async () => {

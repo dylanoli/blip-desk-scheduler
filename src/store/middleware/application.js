@@ -14,12 +14,11 @@ const getApplicationAsync = async (dispatch, { payload }) => {
 };
 
 const all = (action) => (dispatch) => {
-    switch (action?.type) {
-        case ApplicationActionsType.GET_APPLICATION:
-            getApplicationAsync(dispatch, action);
-            break;
-        default:
-            break;
+    if (
+        action.type &&
+        action?.type === ApplicationActionsType.GET_APPLICATION
+    ) {
+        getApplicationAsync(dispatch, action);
     }
 
     dispatch(action);

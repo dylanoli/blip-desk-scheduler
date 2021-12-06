@@ -1,9 +1,11 @@
 export const DEFAULT_TIME = {
     weekdays: [
         {
+            day: 'Domingo',
             workTimes: []
         },
         {
+            day: 'Segunda',
             workTimes: [
                 {
                     start: '09:00',
@@ -12,6 +14,7 @@ export const DEFAULT_TIME = {
             ]
         },
         {
+            day: 'Terça',
             workTimes: [
                 {
                     start: '09:00',
@@ -20,6 +23,7 @@ export const DEFAULT_TIME = {
             ]
         },
         {
+            day: 'Quarta',
             workTimes: [
                 {
                     start: '09:00',
@@ -28,6 +32,7 @@ export const DEFAULT_TIME = {
             ]
         },
         {
+            day: 'Quinta',
             workTimes: [
                 {
                     start: '09:00',
@@ -36,6 +41,7 @@ export const DEFAULT_TIME = {
             ]
         },
         {
+            day: 'Sexta',
             workTimes: [
                 {
                     start: '09:00',
@@ -44,6 +50,7 @@ export const DEFAULT_TIME = {
             ]
         },
         {
+            day: 'Sábado',
             workTimes: []
         }
     ],
@@ -59,5 +66,6 @@ export const DEFAULT_TIME = {
         '11-15',
         '12-25',
         '12-31'
-    ]
+    ],
+    schedulerMessage: 'olá'
 };

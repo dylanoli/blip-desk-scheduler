@@ -14,12 +14,8 @@ const getLanguageAsync = async (dispatch, { payload }) => {
 };
 
 const all = (action) => (dispatch) => {
-    switch (action?.type) {
-        case CommonActionTypes.GET_LANGUAGE:
-            getLanguageAsync(dispatch, action);
-            break;
-        default:
-            break;
+    if (action.type && action.type === CommonActionTypes.GET_LANGUAGE) {
+        getLanguageAsync(dispatch, action);
     }
 
     dispatch(action);

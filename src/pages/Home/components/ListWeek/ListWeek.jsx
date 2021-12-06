@@ -2,15 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HoursList from '../HoursList';
 
-const WEEK_DAYS = [
-    'Domingo',
-    'Segunda',
-    'Terça',
-    'Quarta',
-    'Quinta',
-    'Sexta',
-    'Sábado'
-];
 const ListWeek = ({
     times,
     changeStart,
@@ -20,11 +11,11 @@ const ListWeek = ({
 }) => {
     return (
         <>
-            {WEEK_DAYS.map((element, index) => (
+            {times.weekdays.map((element, index) => (
                 <div key={index}>
-                    <h2>{element}</h2>
+                    <h2>{element.day}</h2>
                     <HoursList
-                        workTimes={times.weekdays[index].workTimes}
+                        workTimes={element.workTimes}
                         index={index}
                         changeStart={changeStart}
                         changeEnd={changeEnd}

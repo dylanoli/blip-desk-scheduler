@@ -12,10 +12,16 @@ const DayOff = ({
 }) => {
     const { t } = useTranslation();
 
+    const styles = {
+        daysOffGroup: {
+            display: 'flex',
+            justifyContent: 'start'
+        }
+    };
     return (
-        <div>
+        <div data-testid="day-off">
             {noWorkDays.map((element, index) => (
-                <div key={index} className="days-off-group">
+                <div key={index} style={styles.daysOffGroup}>
                     <Input
                         name="start"
                         placeholder="MM-DD"
@@ -24,6 +30,7 @@ const DayOff = ({
                         onChange={(event) => {
                             changeDayOff(index, event);
                         }}
+                        dataTestId={`ipt-data-${index}`}
                     />
                     <Button
                         text=""
@@ -34,11 +41,13 @@ const DayOff = ({
                         onClick={() => {
                             removeDayOff(index);
                         }}
+                        dataTestId={`btn-remove-${index}`}
                     />
                 </div>
             ))}
             <br />
             <Button
+                dataTestId={`btn-add`}
                 text={t('labels.new')}
                 icon="add"
                 variant="primary"

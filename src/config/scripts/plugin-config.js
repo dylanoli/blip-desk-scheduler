@@ -3,7 +3,7 @@
  * CHARTS
  */
 const CHARTS_LOOK_UP_PATH = './charts/**/*';
-const CURRENT_CHARTS_NAME = 'PLUGIN_NAME';
+const CURRENT_CHARTS_NAME = 'blip-desk-scheduler';
 const REGEX_CHARTS = new RegExp(`${CURRENT_CHARTS_NAME}`, 'g');
 
 const CHARTS_CURRENT_PATH = `./charts/${CURRENT_CHARTS_NAME}`;
