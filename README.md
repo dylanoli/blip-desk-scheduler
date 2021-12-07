@@ -4,8 +4,8 @@
 Today, the installation it's made manually on the [portal.blip](https://portal.blip.ai), following the steps below:
 1. Select the bot in your panel.
 2. Go to bot settings.
-3. In basic settings session, go to "Click here to access the advanced settings" and next, click in "confirm".
-4. Find (or create in case he not exist) the item whose the name of the key is "Plugin" and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
+3. In basic settings session, go to "Click here to access the advanced settings" and next, click "confirm".
+4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugin" and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
 ```
 {
     "blip-desk-scheduler": {
@@ -14,17 +14,17 @@ Today, the installation it's made manually on the [portal.blip](https://portal.b
     }
 }
 ```
-the value of **{{url}}** should be replaced by the one links below:\
+the value of **{{url}}** should be replaced by the one of the links below:\
 tests environment: https://alphacanis.space:3200 \
 homologation environment: https://blip-desk-scheduler.hmg-cs.blip.ai \
 production environment: https://blip-desk-scheduler.cs.blip.ai \
 5. So you can save the modifications, and now your bot has the Blip Desk Scheduler plugin.
 
 ## 💻Usage
-To use the plugin, you need to click in more options (three points icon) in the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
-to configure the times work and days off in your attendiment. In the end, click in **"Save"**. 
+To use the plugin, you need to click more options (three points icon) on the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
+to configure the times work and days off in your attendiment. In the end, click **"Save"**. 
 
-When you click in "save", the plugin will generate in the bot resources a "workTime" variable that you can use to handle the o atendimento work time. 
+When you click "save", the plugin will generate in the bot resources a "workTime" variable that you can use to handle the attendiment work time. 
 
 ### workTime variable:
 ```
