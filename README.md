@@ -54,4 +54,4 @@ When you click in "save", the plugin will generate in the bot resources a "workT
 ## 🤖Bot Exemple
 We have a exemple bot that you can use with base project. he already has the scripts to handle with workTime variable to management of attending work times.
 
-To use him, you just need import [this file](https://github.com/dylanoli/blip-desk-scheduler/blob/develop/public/blipdeskscheduler.json) in your flow, and create a settings variable called "token" whose value it's the key of router bot (bot that has the plugin)
+To use him, you just need import [this file](https://github.com/dylanoli/blip-desk-scheduler/blob/develop/public/blipdeskscheduler.json) in your flow.
