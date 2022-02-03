@@ -54,4 +54,4 @@ When you click "save", the plugin will generate in the bot resources a "workTime
 ## 🤖Bot Exemple
 We have a exemple bot that you can use with base project. he already has the scripts to handle with workTime variable to management of attending work times.
 
-To use him, you just need import [this file](https://github.com/dylanoli/blip-desk-scheduler/blob/develop/public/blipdeskscheduler.json) in your flow.
+To use him, you just need import [this file](https://drive.google.com/file/d/1iRXAV0LjKnWnwq0BipmFRuu4iikrZ96P/view?usp=sharing) in your flow.
