@@ -5,7 +5,7 @@ Today, the installation it's made manually on the [portal.blip](https://portal.b
 1. Select the bot in your panel.
 2. Go to bot settings.
 3. In basic settings session, go to "Click here to access the advanced settings" and next, click "confirm".
-4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugin" and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
+4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugins" and Domain is postmaster@portal.blip.ai and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
 ```
 {
     "blip-desk-scheduler": {
