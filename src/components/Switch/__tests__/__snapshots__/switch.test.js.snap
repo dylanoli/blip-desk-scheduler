@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch component should render correctly 1`] = `
+<label
+  class="relative flex w-100 items-center switch"
+>
+  <input
+    data-testid="switch-input"
+    name="test"
+    type="checkbox"
+  />
+  <span
+    class="relative pointer top-0 left-0 right-0 bottom-0 bp-bg-neutral-medium-silver slider round"
+  />
+</label>
+`;

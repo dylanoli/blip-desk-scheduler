@@ -16,6 +16,7 @@ import { DEFAULT_TIME } from './constants';
 import { buildSchedulerMessage } from './buildSchedulerMessage';
 import DayOff from './components/DaysOff';
 import ListWeek from './components/ListWeek';
+import Paper from '../../components/Paper';
 
 const PAGE_ICON = 'plugin';
 const BLANK = '_blank';
@@ -170,6 +171,7 @@ const Home = () => {
                     disabled={false}
                     onClick={saveAsync}
                 />
+                <Paper>ola</Paper>
             </div>
         );
     }
