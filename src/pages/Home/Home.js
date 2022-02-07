@@ -171,7 +171,6 @@ const Home = () => {
                     disabled={false}
                     onClick={saveAsync}
                 />
-                <Paper>ola</Paper>
             </div>
         );
     }
