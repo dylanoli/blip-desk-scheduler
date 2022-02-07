@@ -8,10 +8,12 @@ import { Router } from 'react-router-dom';
 
 import Home from '../Home';
 import { getApplicationDataAsync } from '../../../services/application-service';
+import { track } from '../../../services/analytics-service';
 import { getResourceAsync } from '../../../services/resources-service';
 import { DEFAULT_TIME } from '../constants';
 
 jest.mock('../../../services/application-service');
+jest.mock('../../../services/analytics-service');
 jest.mock('../../../services/resources-service');
 describe('Home page', () => {
     const history = createMemoryHistory();
@@ -28,7 +30,21 @@ describe('Home page', () => {
         window.open = originalOpen;
     });
 
+    function mockSetApplication() {
+        return { shortName: 'test' };
+    }
+
     it('should navigate to repository', () => {
+        React.useState = jest
+            .fn()
+            .mockReturnValueOnce([DEFAULT_TIME, jest.fn()])
+            .mockReturnValueOnce([false, jest.fn()])
+            .mockReturnValueOnce([{ shortName: 'test' }, mockSetApplication]);
+
+        track.mockImplementationOnce(() => {
+            return Promise.resolve({ status: 'success' });
+        });
+
         render(
             <Router history={history}>
                 <Home />
@@ -48,8 +64,17 @@ describe('Home page', () => {
     });
 
     it('load content without resource', async () => {
+        React.useState = jest
+            .fn()
+            .mockReturnValueOnce([DEFAULT_TIME, jest.fn()])
+            .mockReturnValueOnce([false, jest.fn()])
+            .mockReturnValueOnce([{ shortName: 'test' }, mockSetApplication]);
         getApplicationDataAsync.mockImplementationOnce(() => {
             return Promise.resolve({ shortName: 'test' });
+        });
+
+        track.mockImplementationOnce(() => {
+            return Promise.resolve({ status: 'success' });
         });
 
         render(
@@ -70,6 +95,16 @@ describe('Home page', () => {
     });
 
     it('load content without resource complete', async () => {
+        React.useState = jest
+            .fn()
+            .mockReturnValueOnce([DEFAULT_TIME, jest.fn()])
+            .mockReturnValueOnce([false, jest.fn()])
+            .mockReturnValueOnce([{ shortName: 'test' }, mockSetApplication]);
+
+        track.mockImplementationOnce(() => {
+            return Promise.resolve({ status: 'success' });
+        });
+
         getApplicationDataAsync.mockImplementationOnce(() => {
             return Promise.resolve({ shortName: 'test' });
         });
@@ -95,6 +130,16 @@ describe('Home page', () => {
     });
 
     it('load content with resource and times null', async () => {
+        React.useState = jest
+            .fn()
+            .mockReturnValueOnce([DEFAULT_TIME, jest.fn()])
+            .mockReturnValueOnce([false, jest.fn()])
+            .mockReturnValueOnce([{ shortName: 'test' }, mockSetApplication]);
+
+        track.mockImplementationOnce(() => {
+            return Promise.resolve({ status: 'success' });
+        });
+
         getApplicationDataAsync.mockImplementationOnce(() => {
             return Promise.resolve({ shortName: 'test' });
         });
@@ -121,7 +166,15 @@ describe('Home page', () => {
     });
 
     it('load content with resource and times default', async () => {
-        React.useState = jest.fn().mockReturnValue([DEFAULT_TIME, jest.fn()]);
+        React.useState = jest
+            .fn()
+            .mockReturnValueOnce([DEFAULT_TIME, jest.fn()])
+            .mockReturnValueOnce([false, jest.fn()])
+            .mockReturnValueOnce([{ shortName: 'test' }, mockSetApplication]);
+
+        track.mockImplementationOnce(() => {
+            return Promise.resolve({ status: 'success' });
+        });
 
         getApplicationDataAsync.mockImplementationOnce(() => {
             return Promise.resolve({ shortName: 'test' });

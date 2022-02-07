@@ -7,12 +7,13 @@ import {
     getResourceAsync,
     saveResourceAsync
 } from '../../services/resources-service';
-
+import { EXTENSION_TRACKS } from '../../constants/trackings';
 import settings from '../../config';
-
+import { track } from '../../services/analytics-service';
 import Header from './components/Header';
 import Button from '../../components/Button';
 import { DEFAULT_TIME } from './constants';
+import { buildSchedulerMessage } from './buildSchedulerMessage';
 import DayOff from './components/DaysOff';
 import ListWeek from './components/ListWeek';
 
@@ -22,8 +23,8 @@ const WORK_TIME_NAME = 'workTime';
 
 const Home = () => {
     const [times, setTimes] = React.useState(null);
-    const [strongDayFormat, setStrongDayFormat] = React.useState(false);
-    const [application, setApplication] = React.useState({});
+    const STRONG_DAY_FORMAT_DEFAULT = false;
+    const [application, setApplication] = React.useState({ shortName: 'init' });
     const { t } = useTranslation();
     const styles = {
         weekContainer: {
@@ -34,6 +35,9 @@ const Home = () => {
     React.useEffect(() => {
         withLoadingAsync(async () => {
             setApplication(await getApplicationDataAsync());
+            track(EXTENSION_TRACKS.open, {
+                botId: application.name
+            });
             try {
                 const resourceTimes = JSON.parse(
                     await getResourceAsync(WORK_TIME_NAME)
@@ -49,87 +53,22 @@ const Home = () => {
         });
     }, [application.shortName]);
 
-    const woorkDaysIsEquals = (a, b) => {
-        if (a.workTimes.length !== b.workTimes.length) {
-            return false;
-        }
-        for (let index = 0; index < a.workTimes.length; index++) {
-            if (
-                a.workTimes[index].start !== b.workTimes[index].start ||
-                a.workTimes[index].end !== b.workTimes[index].end
-            ) {
-                return false;
-            }
-        }
-        return true;
-    };
-
-    const buildSchedulerMessage = (val) => {
-        let message = '';
-
-        // run by all weekdays
-        for (let index = 0; index < val.weekdays.length; index++) {
-            // verify if has workTimes in this day
-            if (val.weekdays[index].workTimes.length > 0) {
-                const firstDay = val.weekdays[index].day;
-                let lastDay = val.weekdays[index].day;
-                let findDiferentDay = false;
-
-                // join days that have equals worktimes
-                for (
-                    let indexj = index + 1;
-                    indexj < val.weekdays.length && !findDiferentDay;
-                    indexj++
-                ) {
-                    if (
-                        woorkDaysIsEquals(
-                            val.weekdays[index],
-                            val.weekdays[indexj]
-                        )
-                    ) {
-                        lastDay = val.weekdays[indexj].day;
-                        index = indexj;
-                    } else {
-                        findDiferentDay = true;
-                    }
-                }
-
-                // build hour text
-                let hoursText = '';
-                val.weekdays[index].workTimes.forEach((hour, indexHour) => {
-                    const hourStartFormated = hour.start.replace(':', 'h');
-                    const hourEndFormated = hour.end.replace(':', 'h');
-                    hoursText += `${hourStartFormated} às ${hourEndFormated}`;
-                    if (indexHour < val.weekdays[index].workTimes.length - 1) {
-                        hoursText += '; ';
-                    }
-                });
-
-                // build day text
-                const dayText =
-                    firstDay === lastDay
-                        ? firstDay
-                        : `${firstDay} a ${lastDay}`;
-                if (strongDayFormat) {
-                    message += `*${dayText}:* ${hoursText}\n`;
-                } else {
-                    message += `${dayText}: ${hoursText}\n`;
-                }
-            }
-        }
-
-        return message;
-    };
-
     const handleChangeTimes = (val) => {
-        const schedulerMessage = buildSchedulerMessage(val);
+        const schedulerMessage = buildSchedulerMessage(
+            val,
+            STRONG_DAY_FORMAT_DEFAULT
+        );
         setTimes({
             ...val,
             schedulerMessage
         });
     };
+
     const saveAsync = async () => {
         await saveResourceAsync(WORK_TIME_NAME, times);
+        track(EXTENSION_TRACKS.save, {
+            time: times
+        });
     };
 
     const removeDayOff = (index) => {
@@ -231,14 +170,6 @@ const Home = () => {
                     disabled={false}
                     onClick={saveAsync}
                 />
-                {/* <bds-switch
-                    checked={strongDayFormat}
-                    bdsChange={() => {
-                        console.log('ola');
-                        setStrongDayFormat(!strongDayFormat);
-                    }}
-                ></bds-switch>
-                <p>{times.schedulerMessage}</p> */}
             </div>
         );
     }
