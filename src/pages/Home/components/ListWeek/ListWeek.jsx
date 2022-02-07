@@ -15,6 +15,7 @@ const ListWeek = ({
                 <div key={index}>
                     <h2>{element.day}</h2>
                     <HoursList
+                        key={index}
                         workTimes={element.workTimes}
                         index={index}
                         changeStart={changeStart}

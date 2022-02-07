@@ -17,7 +17,7 @@ const HoursList = ({
     return (
         <div>
             {workTimes.map((element, indexHour) => (
-                <>
+                <div key={index}>
                     <Input
                         name="start"
                         label={t('labels.start')}
@@ -50,7 +50,7 @@ const HoursList = ({
                             removeWorkTime(index, indexHour);
                         }}
                     />
-                </>
+                </div>
             ))}
             <br />
             <Button
