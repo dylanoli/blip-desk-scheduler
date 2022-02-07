@@ -5,7 +5,7 @@ Today, the installation it's made manually on the [portal.blip](https://portal.b
 1. Select the bot in your panel.
 2. Go to bot settings.
 3. In basic settings session, go to "Click here to access the advanced settings" and next, click "confirm".
-4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugin" and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
+4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugins" and Domain is postmaster@portal.blip.ai and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
 ```
 {
     "blip-desk-scheduler": {
@@ -54,4 +54,4 @@ When you click "save", the plugin will generate in the bot resources a "workTime
 ## 🤖Bot Exemple
 We have a exemple bot that you can use with base project. he already has the scripts to handle with workTime variable to management of attending work times.
 
-To use him, you just need import [this file](https://github.com/dylanoli/blip-desk-scheduler/blob/develop/public/blipdeskscheduler.json) in your flow.
+To use him, you just need import [this file](https://drive.google.com/file/d/1iRXAV0LjKnWnwq0BipmFRuu4iikrZ96P/view?usp=sharing) in your flow.
