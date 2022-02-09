@@ -8,36 +8,144 @@
 @import 'mixins';
 @import 'utilities';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: $font-family;
+    background-color: #f5f8f9;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+.help {
+    cursor: help;
 }
 
-.App-logo {
-    height: 10rem;
-    pointer-events: none;
+.word-break {
+    word-break: break-all;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: Heartbit infinite 4s linear;
+// replace style - Perfect Scrollbar
+.trace-scrollbar {
+    position: inherit !important;
+
+    .ps__rail-x:hover > .ps__thumb-x,
+    .ps__rail-x:focus > .ps__thumb-x,
+    .ps__rail-x.ps--clicking .ps__thumb-x {
+        background: #0a0f1a;
+        border: 1px solid #d2dfe6;
+    }
+
+    .ps__thumb-x {
+        background: #0a0f1a;
+        opacity: 0.47;
+        border: 1px solid #d2dfe6;
+        box-sizing: border-box;
+        border-radius: 5px;
+        height: 8px;
+    }
+    // &.ps {
+    //     overflow: visible !important;
+    // }
+
+    &.ps .ps__rail-x:hover,
+    &.ps .ps__rail-y:hover,
+    &.ps .ps__rail-x:focus,
+    &.ps .ps__rail-y:focus,
+    &.ps .ps__rail-x.ps--clicking,
+    &.ps .ps__rail-y.ps--clicking {
+        background-color: #3a4a65;
+        opacity: 0.9;
     }
 }
 
-@keyframes Heartbit {
-    50% {
-        -webkit-transform: scale(0.5);
-        opacity: 0.3;
+// replace style - React Ace
+.ace_editor {
+    &:hover {
+        .ace_scrollbar {
+            &::-webkit-scrollbar,
+            &::-webkit-scrollbar-track,
+            &::-webkit-scrollbar-thumb {
+                visibility: visible;
+            }
+        }
     }
-    100% {
-        -webkit-transform: scale(1);
-        opacity: 1;
+
+    &.ace-github.read-only {
+        background: transparent;
+    }
+    
+    &.read-only {
+        .ace_gutter {
+            border-right: 1px solid #e8e8e8;
+            background: #f6f6f6;
+        }
+    }
+
+    .ace_scrollbar {
+        &.ace_scrollbar-v {
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 0.5rem;
+                visibility: hidden;
+            }
+        }
+
+        &.ace_scrollbar-h {
+            overflow-x: scroll;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar {
+                height: 0.5rem;
+                visibility: hidden;
+            }
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(210, 223, 230, 0.3);
+            visibility: hidden;
+
+            &:hover {
+                background: rgba(210, 223, 230, 0.3);
+            }
+        }
+        &::-webkit-scrollbar-thumb {
+            visibility: hidden;
+            background: #b9cbd3;
+            background-clip: content-box;
+            border-radius: 0.313rem;
+            border: 0.063rem solid rgba(210, 223, 230, 0.3);
+            opacity: 0.47;
+        }
+
+        &:hover {
+            &::-webkit-scrollbar,
+            &::-webkit-scrollbar-track,
+            &::-webkit-scrollbar-thumb {
+                visibility: visible;
+            }
+        }
     }
 }
+
+@include register-classname('not-allowed', 'cursor', 'not-allowed');
+@include register-classname('mt1-5', 'margin-top', '1.5rem');
+@include register-classname('pb2-5', 'padding-bottom', '2.5rem');
+@include register-classname('minw2-875', 'min-width', '2.875rem');
+@include register-classname('mw12', 'max-width', '12rem');
+@include register-classname('mw20', 'max-width', '20rem');
+@include register-classname('w18', 'width', '18rem');
+@include register-classname('w2-5', 'width', '2.5rem');
+@include register-classname('mh10', 'max-height', '10rem');
+@include register-classname('bw0-188', 'border-width', '0.188rem');
+@include register-classname('br0-188', 'border-radius', '0.188rem');
+@include register-classname(
+    'card-shadow',
+    'box-shadow',
+    '0px 10px 16px rgba(7, 71, 166, 0.12)'
+);

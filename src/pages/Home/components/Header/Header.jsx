@@ -11,8 +11,7 @@ const Header = ({ title, icon, onClick = () => {} }) => {
         <div className="ml3">
             <Button
                 text={t('button.repository')}
-                icon="link"
-                variant="ghost"
+                variant="primary"
                 onClick={() => onClick()}
                 dataTestId="repository-link"
             />

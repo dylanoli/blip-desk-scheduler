@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/named
+import { BdsSwitch } from 'blip-ds/dist/blip-ds-react';
 import { withLoadingAsync } from '../../services/common-service';
 import { getApplicationDataAsync } from '../../services/application-service';
 import {
@@ -16,7 +17,7 @@ import { DEFAULT_TIME } from './constants';
 import { buildSchedulerMessage } from './buildSchedulerMessage';
 import DayOff from './components/DaysOff';
 import ListWeek from './components/ListWeek';
-import Paper from '../../components/Paper';
+import Switch from '../../components/Switch';
 
 const PAGE_ICON = 'plugin';
 const BLANK = '_blank';
@@ -144,6 +145,7 @@ const Home = () => {
                     icon={PAGE_ICON}
                     onClick={() => window.open(settings.repositoryUrl, BLANK)}
                 />
+
                 <h2>Dias de trabalho</h2>
                 <div style={styles.weekContainer}>
                     <ListWeek
