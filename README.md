@@ -1,26 +1,23 @@
 # ⏱ Blip Desk Scheduler
 
 ## 🔌Manual Installation
-Today, the installation it's made manually on the [portal.blip](https://portal.blip.ai), following the steps below:
-1. Select the bot in your panel.
-2. Go to bot settings.
-3. In basic settings session, go to "Click here to access the advanced settings" and next, click "confirm".
-4. Find (or create in case it dosen't exist) the item whose the name of the key is "Plugins" and Domain is postmaster@portal.blip.ai and insert in value, the attribute **"blip-desk-scheduler"** following the example below:
-```
-{
-    "blip-desk-scheduler": {
-        "name": "Blip Desk Scheduler",
-        "url": "{{url}}"
-    }
-}
-```
-the value of **{{url}}** should be replaced by the one of the links below:\
-tests environment: https://alphacanis.space:3200 \
-homologation environment: https://blip-desk-scheduler.hmg-cs.blip.ai \
-production environment: https://blip-desk-scheduler.cs.blip.ai \
-5. So you can save the modifications, and now your bot has the Blip Desk Scheduler plugin.
+You can install Blip Desk Scheduler following the steps below:
+1. Open your bot;
+2. Click more options (three points icon) on the top menu and select Extensions;
+3. Search for Blip Desk Scheduler;
+4. Activate it;
 
 ## 💻Usage
+After installing the plugin you'll need to configure it in two steps:
+- 🟦 Builder configuration:
+
+Before any configuration in **Blip Scheduler plugin**, you'll have to change the attendance time check inside your flow to assure that your flow will be fetching attendance information from the configurations that Blip Scheduler plugin will create.
+
+Before your attendance box you'll use the following script:
+[scheduler.js](https://github.com/dylanoli/blip-desk-scheduler/blob/master/public/scheduler.js)
+
+- 📅 Plugin Configuration
+
 To use the plugin, you need to click more options (three points icon) on the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
 to configure the times work and days off in your attendiment. In the end, click **"Save"**. 
 
