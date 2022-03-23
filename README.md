@@ -4,10 +4,10 @@
 
 <div id='postgues'/> 
 
-## 🔌Intalação
+## 🔌Instalação
 Você pode instalar o Blip Desk Scheduler seguindo os passos abaixo:
 1. Abra seu bot
-3. Click em mais opções (icone de três pontos) no topo do menu e selecione Extensões;
+3. Clique em mais opções (icone de três pontos) no topo do menu e selecione Extensões;
 4. Procure por Blip Desk Scheduler e o ative;
 
 ## 💻Uso
@@ -19,9 +19,9 @@ Antes de qualquer configuração no **plugin Blip Scheduler**, você precisa alt
 No bloco anterior ao bloco de atendimento humano deverá conter o seguinte script:
 [scheduler.js](https://github.com/dylanoli/blip-desk-scheduler/blob/master/public/scheduler.js)
 
-- 📅 Plugin Configuration
+- 📅 Configurações do Plugin
 
-To use the plugin, you need to click more options (three points icon) on the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
+Para usar o plugin, você precisa clicar em mais opções (icone de três pontos) on the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
 to configure the times work and days off in your attendiment. In the end, click **"Save"**. 
 
 When you click "save", the plugin will generate in the bot resources a "workTime" variable that you can use to handle the attendiment work time, creating a script inside your bot (we have a script bellow and an bot Bot Exemple secsion that you can use). 
@@ -60,6 +60,7 @@ You can create your own bot and use this [script](https://github.com/dylanoli/bl
 
 ## 🎥Extra content
 [Tutorial video](https://www.linkedin.com/posts/dylan-oliveira-7a9113161_v%C3%ADdeo-de-apresenta%C3%A7%C3%A3oao-blip-desk-scheduler-activity-6895072700218650624-jfCH)
+
 
 <div id='ingles'/> 
 
