@@ -7,7 +7,7 @@
 ## 🔌Instalação
 Você pode instalar o Blip Desk Scheduler seguindo os passos abaixo:
 1. Abra seu bot
-3. Clique em mais opções (icone de três pontos) no topo do menu e selecione Extensões;
+3. Clique em mais opções (icone de três pontos) no menu superior e selecione Extensões;
 4. Procure por Blip Desk Scheduler e o ative;
 
 ## 💻Uso
@@ -21,8 +21,8 @@ No bloco anterior ao bloco de atendimento humano deverá conter o seguinte scrip
 
 - 📅 Configurações do Plugin
 
-Para usar o plugin, você precisa clicar em mais opções (icone de três pontos) on the top menu and select Blip Desk Scheduler, so you will go to the scheduler panel, 
-to configure the times work and days off in your attendiment. In the end, click **"Save"**. 
+Para usar o plugin, você precisa clicar em mais opções (icone de três pontos) no menu superior então e Blip Desk Scheduler, então você irá para o painel de agendamento, 
+para configurar as horas de trabalho e dias de feriados em seu atendimento. No fim, clique em **"Save"**. 
 
 When you click "save", the plugin will generate in the bot resources a "workTime" variable that you can use to handle the attendiment work time, creating a script inside your bot (we have a script bellow and an bot Bot Exemple secsion that you can use). 
 
