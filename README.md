@@ -24,9 +24,9 @@ No bloco anterior ao bloco de atendimento humano deverá conter o seguinte scrip
 Para usar o plugin, você precisa clicar em mais opções (icone de três pontos) no menu superior então e Blip Desk Scheduler, então você irá para o painel de agendamento, 
 para configurar as horas de trabalho e dias de feriados em seu atendimento. No fim, clique em **"Save"**. 
 
-When you click "save", the plugin will generate in the bot resources a "workTime" variable that you can use to handle the attendiment work time, creating a script inside your bot (we have a script bellow and an bot Bot Exemple secsion that you can use). 
+Quando você clica em "save", o plugin irá criar no seu bot no resources uma variável "workTime" que você pode usar para gerenciar os horários de atendimento, crianto um script dentro do seu bot (temos um script e um bot na sessão Ememplo de Bot que você pode utilizar). 
 
-### workTime variable:
+### variável workTime :
 ```
 {
     "weekdays": [
@@ -49,14 +49,12 @@ When you click "save", the plugin will generate in the bot resources a "workTime
     "schedulerMessage": "scheduler message"
 }
 ```
-**TIPS:** You can use the "schedulerMessage" variable to get a message to show in a block.
+**Dica:** Você pode usar a variável "schedulerMessage" para obter uma mensagem mostrando os horários de atendimento em um bloco.
 
-## 🤖Bot Exemple
-We have a exemple bot that you can use with base project. he already has the scripts to handle with workTime variable to management of attending work times.
+## 🤖Exemplo de Bot
+Temos um script para controlar os horários de atendimento, você pode usa-lo em um bloco antes do bloco de atendimento. O script pode ser baixado [aqui](https://github.com/dylanoli/blip-desk-scheduler/blob/master/public/scheduler.js).
 
-To use him, you just need import [this file](https://drive.google.com/file/d/1iRXAV0LjKnWnwq0BipmFRuu4iikrZ96P/view?usp=sharing) in your flow.
-
-You can create your own bot and use this [script](https://github.com/dylanoli/blip-desk-scheduler/blob/master/public/scheduler.js).
+ ou você pode simplemente usar nosso bot de exemplo que já configurado para ser a base do seu projeto, para isso você deve importar [esse arquivo](https://drive.google.com/file/d/1iRXAV0LjKnWnwq0BipmFRuu4iikrZ96P/view?usp=sharing) em seu fluxo.
 
 ## 🎥Extra content
 [Tutorial video](https://www.linkedin.com/posts/dylan-oliveira-7a9113161_v%C3%ADdeo-de-apresenta%C3%A7%C3%A3oao-blip-desk-scheduler-activity-6895072700218650624-jfCH)
@@ -110,7 +108,7 @@ When you click "save", the plugin will generate in the bot resources a "workTime
     "schedulerMessage": "scheduler message"
 }
 ```
-**TIPS:** You can use the "schedulerMessage" variable to get a message to show in a block.
+**TIPS:** You can use the "schedulerMessage" variable to get a message to show attendance work times in a block.
 
 ## 🤖Bot Exemple
 We have a exemple bot that you can use with base project. he already has the scripts to handle with workTime variable to management of attending work times.
