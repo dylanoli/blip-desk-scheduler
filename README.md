@@ -47,6 +47,8 @@ Quando você clica em "save", o plugin irá criar no seu bot no resources uma va
 ```
 **Dica:** Você pode usar a variável "schedulerMessage" para obter uma mensagem mostrando os horários de atendimento em um bloco.
 
+**OBS:** Se o bot tiver roteador, as instalação do plugin deverá ser feito no roteador, porém as Configurações no Builder devem ser feitos no bot de transbordo com o contexto do roteador sendo utilizado.
+
 ## 🤖Exemplo de Bot
 Temos um script para controlar os horários de atendimento, você pode usa-lo em um bloco antes do bloco de atendimento. O script pode ser baixado [aqui](https://github.com/dylanoli/blip-desk-scheduler/blob/master/public/scheduler.js).
 
